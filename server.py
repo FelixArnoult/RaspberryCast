@@ -45,7 +45,7 @@ root.addHandler(ch)
 player=PlayerManager()
 
 if config["new_log"]:
-    os.system("sudo fbi -T 1 --noverbose -a  images/ready.jpg")
+    # os.system("sudo fbi -T 1 --noverbose -a  images/ready.jpg")
 
 setState("0")
 open('video.queue', 'w').close()  # Reset queue
