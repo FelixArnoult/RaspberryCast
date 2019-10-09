@@ -24,10 +24,3 @@ class PlayerManager(object, metaclass=Singleton):
          self.createPlayer();
       print("Le player utilisé"+ self.player)
       return self.player
-
-
-
-
-print(Logger())
-print(Logger())
-print(Logger())
