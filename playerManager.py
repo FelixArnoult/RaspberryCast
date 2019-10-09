@@ -10,8 +10,7 @@ class Singleton(type):
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
-class PlayerManager(object):
-   __metaclass__ = Singleton
+class PlayerManager(object, metaclass=Singleton):
    def __init__(self):
       self.playerAlive=False
 
@@ -25,3 +24,10 @@ class PlayerManager(object):
          self.createPlayer();
       print("Le player utilisé"+ self.player)
       return self.player
+
+
+
+
+print(Logger())
+print(Logger())
+print(Logger())
