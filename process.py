@@ -151,7 +151,7 @@ def playWithOMX(url):#, sub, width="", height="", new_log=False):
     logger.info("Starting OMXPlayer now.")
 
     logger.info("Attempting to read resolution from configuration file.")
-    player.getPlayer().load(url)
+    player.load(url)
     # resolution = ""
     #
     # if width or height:
