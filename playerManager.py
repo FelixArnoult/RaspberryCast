@@ -21,6 +21,6 @@ class PlayerManager(object):
       self.playerAlive=true
 
    def getPlayer(self):
-      if(not self.playerAlive)
+      if(not self.playerAlive):
          self.createPlayer();
       return self.player

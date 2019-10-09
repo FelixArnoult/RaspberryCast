@@ -4,6 +4,7 @@ import logging
 import os
 import sys
 import json
+from playerManager import PlayerManager
 try:
     # this works in Python3
     from urllib.request import urlretrieve
@@ -36,17 +37,12 @@ root = logging.getLogger()
 root.setLevel(logging.DEBUG)
 
 ch = logging.StreamHandler(sys.stdout)
-ch.setLevel(logging.INFO)
+ch.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
 ch.setFormatter(formatter)
 root.addHandler(ch)
 
-try:
-    os.mkfifo("/tmp/cmd")
-except OSError as e:
-    # 17 means the file already exists.
-    if e.errno != 17:
-        raise
+player=PlayerManager()
 
 if config["new_log"]:
     os.system("sudo fbi -T 1 --noverbose -a  images/ready.jpg")
@@ -171,27 +167,30 @@ def video():
     control = request.query['control']
     if control == "pause":
         logger.info('Command : pause')
-        os.system("echo -n p > /tmp/cmd &")
+        player.getPlayer().play_pause()
+        # os.system("echo -n p > /tmp/cmd &")
         return "1"
     elif control in ["stop", "next"]:
         logger.info('Command : stop video')
-        os.system("echo -n q > /tmp/cmd &")
+        player.getPlayer().stop()
+        # os.system("echo -n q > /tmp/cmd &")
         return "1"
     elif control == "right":
         logger.info('Command : forward')
-        os.system("echo -n $'\x1b\x5b\x43' > /tmp/cmd &")
+        # player.getPlayer().play_pause()
+        # os.system("echo -n $'\x1b\x5b\x43' > /tmp/cmd &")
         return "1"
     elif control == "left":
         logger.info('Command : backward')
-        os.system("echo -n $'\x1b\x5b\x44' > /tmp/cmd &")
+        # os.system("echo -n $'\x1b\x5b\x44' > /tmp/cmd &")
         return "1"
     elif control == "longright":
         logger.info('Command : long forward')
-        os.system("echo -n $'\x1b\x5b\x41' > /tmp/cmd &")
+        # os.system("echo -n $'\x1b\x5b\x41' > /tmp/cmd &")
         return "1"
     elif control == "longleft":
         logger.info('Command : long backward')
-        os.system("echo -n $'\x1b\x5b\x42' > /tmp/cmd &")
+        # os.system("echo -n $'\x1b\x5b\x42' > /tmp/cmd &")
         return "1"
 
 
@@ -200,10 +199,12 @@ def sound():
     vol = request.query['vol']
     if vol == "more":
         logger.info('REMOTE: Command : Sound ++')
-        os.system("echo -n + > /tmp/cmd &")
+        player.getPlayer().set_volume(player.getPlayer(volume)+1)
+        # os.system("echo -n + > /tmp/cmd &")
     elif vol == "less":
         logger.info('REMOTE: Command : Sound --')
-        os.system("echo -n - > /tmp/cmd &")
+        player.getPlayer().set_volume(player.getPlayer(volume)-1)
+        # os.system("echo -n - > /tmp/cmd &")
     setVolume(vol)
     return "1"
 
