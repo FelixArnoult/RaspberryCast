@@ -13,7 +13,7 @@ class Singleton(type):
 class PlayerManager(OMXPlayer, metaclass=Singleton):
    def __init__(self):
        STREAM_URI = './video.mp4'
-       self.player = OMXPlayer.__ini__(self, STREAM_URI)
+       OMXPlayer.__init__(self, STREAM_URI)
 
-   def getPlayer():
-       return self.player
+   def getPlayer(self):
+       return self
