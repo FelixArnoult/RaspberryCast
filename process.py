@@ -146,7 +146,8 @@ def playlistToQueue(url, config):
                 queuevideo(i['url'], config)
 
 
-def playWithOMX(url, sub, width="", height="", new_log=False):
+# def playWithOMX(url, sub, width="", height="", new_log=False):
+def playWithOMX(url):#, sub, width="", height="", new_log=False):
     logger.info("Starting OMXPlayer now.")
 
     logger.info("Attempting to read resolution from configuration file.")

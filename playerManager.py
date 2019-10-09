@@ -13,12 +13,12 @@ class Singleton(type):
 class PlayerManager(object):
    __metaclass__ = Singleton
    def __init__(self):
-      self.playerAlive=false
+      self.playerAlive=False
 
    def createPlayer(self):
       STREAM_URI = './video.mp4'
       self.player = OMXPlayer(STREAM_URI)
-      self.playerAlive=true
+      self.playerAlive=True
 
    def getPlayer(self):
       if(not self.playerAlive):
