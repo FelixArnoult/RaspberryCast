@@ -22,5 +22,4 @@ class PlayerManager(OMXPlayer, metaclass=Singleton):
    def getPlayer(self):
       if(not self.playerAlive):
          self.createPlayer();
-      print("Le player utilisé"+ self.player)
       return self.player
