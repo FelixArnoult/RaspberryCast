@@ -12,14 +12,8 @@ class Singleton(type):
 
 class PlayerManager(OMXPlayer, metaclass=Singleton):
    def __init__(self):
-      self.playerAlive=False
+       STREAM_URI = './video.mp4'
+       self.player = OMXPlayer.__ini__(self, STREAM_URI)
 
-   def createPlayer(self):
-      STREAM_URI = './video.mp4'
-      self.player = OMXPlayer(STREAM_URI)
-      self.playerAlive=True
-
-   def getPlayer(self):
-      if(not self.playerAlive):
-         self.createPlayer();
-      return self.player
+   def getPlayer():
+       return self.player
