@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import logging
 import os
@@ -44,7 +44,7 @@ root.addHandler(ch)
 
 player=PlayerManager()
 
-if config["new_log"]:
+#if config["new_log"]:
     # os.system("sudo fbi -T 1 --noverbose -a  images/ready.jpg")
 
 setState("0")
