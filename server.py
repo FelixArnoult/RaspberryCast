@@ -5,6 +5,7 @@ import os
 import sys
 import json
 from playerManager import PlayerManager
+
 try:
     # this works in Python3
     from urllib.request import urlretrieve
@@ -199,7 +200,7 @@ def sound():
     vol = request.query['vol']
     if vol == "more":
         logger.info('REMOTE: Command : Sound ++')
-        player.action(PlayerManager.INCREASE_VOLUME)
+        player.action(INCREASE_VOLUME)
         # os.system("echo -n + > /tmp/cmd &")
     elif vol == "less":
         logger.info('REMOTE: Command : Sound --')
