@@ -199,11 +199,11 @@ def sound():
     vol = request.query['vol']
     if vol == "more":
         logger.info('REMOTE: Command : Sound ++')
-        player.action(OMXPlayer.INCREASE_VOLUME)
+        player.action(PlayerManager.INCREASE_VOLUME)
         # os.system("echo -n + > /tmp/cmd &")
     elif vol == "less":
         logger.info('REMOTE: Command : Sound --')
-        player.action(OMXPlayer.DECREASE_VOLUME)
+        player.action(PlayerManager.keys.DECREASE_VOLUME)
         # os.system("echo -n - > /tmp/cmd &")
     setVolume(vol)
     return "1"
