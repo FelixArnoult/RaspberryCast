@@ -5,6 +5,7 @@ import os
 import sys
 import json
 from playerManager import PlayerManager
+import omxplayer.keys as OMXkeys
 
 try:
     # this works in Python3
@@ -200,7 +201,7 @@ def sound():
     vol = request.query['vol']
     if vol == "more":
         logger.info('REMOTE: Command : Sound ++')
-        player.action(INCREASE_VOLUME)
+        player.action(OMXkeys.INCREASE_VOLUME)
         # os.system("echo -n + > /tmp/cmd &")
     elif vol == "less":
         logger.info('REMOTE: Command : Sound --')

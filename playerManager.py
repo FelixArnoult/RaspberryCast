@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from omxplayer.player import OMXPlayer
-from omxplayer.keys import OMXPlayer
+import omxplayer.keys as OMXkeys
 from time import sleep
 
 class Singleton(type):
