@@ -15,30 +15,36 @@ class PlayerManager(OMXPlayer, metaclass=Singleton):
     SHORT_SEEK = 10
     LONG_SEEK = 60
     VOLUME_STEP = 0.5
-    def __init__(self, stream_uri):
-        OMXPlayer.__init__(self, stream_uri)
+    def __init__(self):
         self.SHORT_SEEK = 10
         self.LONG_SEEK = 60
         self.VOLUME_STEP = 0.5
+        self.playerStarted = false
 
     def decrease_volume(self):
-        self.set_volume(self.volume() - self.VOLUME_STEP)
+        super().set_volume(super().volume() - self.VOLUME_STEP)
 
     def increase_volume(self):
-        self.set_volume(self.volume() + self.VOLUME_STEP)
+        super().set_volume(super().volume() + self.VOLUME_STEP)
 
     def short_forward(self): #TODO check when remain duratiSHORT_SEEK
-        if(self.can_seek()):
-            self.seek(self.position() + self.SHORT_SEEK)
+        if(super().can_seek()):
+            super().seek(super().position() + self.SHORT_SEEK)
 
     def short_backward(self):
-        if(self.can_seek()):
-            self.seek(self.position() - self.SHORT_SEEK)
+        if(super().can_seek()):
+            super().seek(super().position() - self.SHORT_SEEK)
 
     def long_forward(self): #TODO check when remain duration < self.SHORT_SEEK
-        if(self.can_seek()):
-            self.seek(self.position() +self. LONG_SEEK)
+        if(super().can_seek()):
+            super().seek(super().position() +self.LONG_SEEK)
 
     def long_backward(self):
-        if(self.can_seek()):
-            self.seek(self.position() -self. LONG_SEEK)
+        if(super().can_seek()):
+            super().seek(super().position() -self.LONG_SEEK)
+
+    def load(self, source, pause = False):
+        if(playerStarted):
+            super().load(source, pause)
+        else :
+            super().__init__(source)
