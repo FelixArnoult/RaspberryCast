@@ -15,7 +15,7 @@ except ImportError:
 from bottle import Bottle, SimpleTemplate, request, response, \
                    template, run, static_file
 from process import launchvideo, queuevideo, playlist, \
-                    setState, getState, setVolume
+                    setState, getState
 
 if len(sys.argv) > 1:
     config_file = sys.argv[1]
