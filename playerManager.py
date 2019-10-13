@@ -27,16 +27,16 @@ class PlayerManager(OMXPlayer, metaclass=Singleton):
 
     def short_forward(self): #TODO check when remain duration < SHORT_SEEK
         if(self.can_seek()):
-            self.seek(self.position() + .self.SHORT_SEEK)
+            self.seek(self.position() + self.SHORT_SEEK)
 
     def short_backward(self):
         if(self.can_seek()):
-            self.seek(self.position() - .self.SHORT_SEEK)
+            self.seek(self.position() - self.SHORT_SEEK)
 
-    def long_forward(self): #TODO check when remain duration < .self.SHORT_SEEK
+    def long_forward(self): #TODO check when remain duration < self.SHORT_SEEK
         if(self.can_seek()):
-            self.seek(self.position() + .self.SHORT_SEEK)
+            self.seek(self.position() + self.SHORT_SEEK)
 
     def long_backward(self):
         if(self.can_seek()):
-            self.seek(self.position() - .self.SHORT_SEEK)
+            self.seek(self.position() - self.SHORT_SEEK)
