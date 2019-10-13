@@ -5,7 +5,6 @@ import os
 import sys
 import json
 from playerManager import PlayerManager
-import omxplayer.keys as OMXkeys
 
 try:
     # this works in Python3
@@ -169,30 +168,27 @@ def video():
     control = request.query['control']
     if control == "pause":
         logger.info('Command : pause')
-        player.getPlayer().play_pause()
-        # os.system("echo -n p > /tmp/cmd &")
+        player.play_pause()
         return "1"
     elif control in ["stop", "next"]:
         logger.info('Command : stop video')
-        player.getPlayer().stop()
-        # os.system("echo -n q > /tmp/cmd &")
+        player.stop()
         return "1"
     elif control == "right":
         logger.info('Command : forward')
-        # player.getPlayer().play_pause()
-        # os.system("echo -n $'\x1b\x5b\x43' > /tmp/cmd &")
+        player.short_forward()
         return "1"
     elif control == "left":
         logger.info('Command : backward')
-        # os.system("echo -n $'\x1b\x5b\x44' > /tmp/cmd &")
+        player.short_backward()
         return "1"
     elif control == "longright":
         logger.info('Command : long forward')
-        # os.system("echo -n $'\x1b\x5b\x41' > /tmp/cmd &")
+        player.long_forward()
         return "1"
     elif control == "longleft":
         logger.info('Command : long backward')
-        # os.system("echo -n $'\x1b\x5b\x42' > /tmp/cmd &")
+        player.long_backward()
         return "1"
 
 
@@ -201,13 +197,10 @@ def sound():
     vol = request.query['vol']
     if vol == "more":
         logger.info('REMOTE: Command : Sound ++')
-        player.action(OMXkeys.INCREASE_VOLUME)
-        # os.system("echo -n + > /tmp/cmd &")
+        player.decrease_volume()
     elif vol == "less":
         logger.info('REMOTE: Command : Sound --')
-        player.action(PlayerManager.keys.DECREASE_VOLUME)
-        # os.system("echo -n - > /tmp/cmd &")
-    setVolume(vol)
+        player.increase_volume()
     return "1"
 
 

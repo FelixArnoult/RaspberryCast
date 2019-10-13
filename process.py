@@ -204,12 +204,3 @@ def setState(state):
 def getState():
     with open('state.tmp', 'r') as f:
         return f.read().replace('\n', '')
-
-
-def setVolume(vol):
-    logger.debug("JE SUIS LA")
-    global volume
-    if vol == "more":
-        volume += 300
-    if vol == "less":
-        volume -= 300
