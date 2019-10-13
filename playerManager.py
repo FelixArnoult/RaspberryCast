@@ -44,7 +44,7 @@ class PlayerManager(OMXPlayer, metaclass=Singleton):
             super().seek(super().position() -self.LONG_SEEK)
 
     def load(self, source, pause = False):
-        if(playerStarted):
+        if(self.playerStarted):
             super().load(source, pause)
         else :
             super().__init__(source)
