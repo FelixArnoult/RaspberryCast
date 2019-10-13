@@ -19,7 +19,7 @@ class PlayerManager(OMXPlayer, metaclass=Singleton):
         self.SHORT_SEEK = 10
         self.LONG_SEEK = 60
         self.VOLUME_STEP = 0.5
-        self.playerStarted = false
+        self.playerStarted = False
 
     def decrease_volume(self):
         super().set_volume(super().volume() - self.VOLUME_STEP)
@@ -48,3 +48,4 @@ class PlayerManager(OMXPlayer, metaclass=Singleton):
             super().load(source, pause)
         else :
             super().__init__(source)
+            self.playerStarted = True
